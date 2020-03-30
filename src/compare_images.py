@@ -38,7 +38,7 @@ if __name__ == '__main__':
         target = sys.argv[1]
     except IndexError:
         print('You need to specify a target')
-        print('python3 compare_images.py <icon-name>')
+        print('python3.7 compare_images.py <icon-name>')
         sys.exit()
 
     image_png = Image.open('./images/'+target+'.png')
@@ -50,7 +50,6 @@ if __name__ == '__main__':
         for name, image in list_individual_images(PATH_EXISTENT):
             if remove_accents(target) not in remove_accents(name):
                 continue
-            print(target, name, target in name)
             captcha_part = READ_CAPTCHA_PATH + captcha_name + '_' + str(i) + '.png'
             existent_image_path = PATH_EXISTENT + name
             diff = compare_image(existent_image_path, captcha_part)
@@ -58,6 +57,5 @@ if __name__ == '__main__':
                 matched_diff = diff
                 match = existent_image_path
                 match_pos = i
-
-    # print(matched_diff, match, match_pos)
+    
     print(match_pos)

@@ -56,26 +56,29 @@ const voteParticipant = async (page) => {
   participantes[config.participantPosition - 1].click();
 
   const iconText = await getTextFromSelector(page)(xpaths.captchaTextClassName);
-  const position = String(childProcess.execSync(`python3 compare_images.py "${iconText}"`)).trim();
-  if(position === "None") {
-    return
-  }
-  const captchaElem = await page.$(xpaths.captcha);
+  
+  childProcess.exec(`python3.7 compare_images.py "${iconText}"`, async (error, stdout, stderr) => {
+    position = parseInt(stdout)
 
-  console.log(`Get captcha: ${iconText} | Position: ${position}`);
-  const x = config.captchaIndividualSize * position + config.captchaCenter;
-  await page.waitFor(config.waitClick);
-  await clickOnElement(page, captchaElem, x, config.captchaCenter);
-  await page.waitFor(config.waitClick);
-
-  try {
-    const captchaError = document.getElementsByClassName(xpaths.captchaErrorMsg)[0].innerHTML;
-    console.log('Captcha Response:', captchaError)
-  } catch {
-    // Vote computed!
-  }
-
-  await revote(page)(voteParticipant);
+    if(position === "None") {
+      return
+    }
+    const captchaElem = await page.$(xpaths.captcha);
+  
+    const x = config.captchaIndividualSize * parseInt(position) + config.captchaCenter;
+    await page.waitFor(config.waitClick);
+    await clickOnElement(page, captchaElem, x, config.captchaCenter);
+    await page.waitFor(config.waitClick);
+  
+    try {
+      const captchaError = document.getElementsByClassName(xpaths.captchaErrorMsg)[0].innerHTML;
+      console.log('Captcha Response:', captchaError)
+    } catch {
+      // Vote computed!
+    }
+  
+    await revote(page)(voteParticipant);
+  })
 }
 
 let voteCounter = 0;

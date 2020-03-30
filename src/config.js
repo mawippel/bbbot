@@ -7,8 +7,8 @@ const links = {
 };
 
 const config = {
-  participantPosition: process.env.PARTICIPANTE || 3,  // [1,2, 3] are the possible options.
-  timeoutClick: 5 * 1000,  // in MS
+  participantPosition: process.env.PARTICIPANTE || 2,
+  timeoutClick: 5 * 1000,  // in milisseconds
   waitClick: 2 * 1000, // in milisseconds
   captchaCenter: 30,
   captchaIndividualSize: 53,
