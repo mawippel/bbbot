@@ -18,7 +18,7 @@ BASE_XPATH = "/html/body/div[2]/div[4]/div";
 USER_XPATH = `${BASE_XPATH}/div[1]/div[4]/div[${config.participantPosition}]`;
 
 const xpaths = {
-  participants: '[class="_18p_tzl-nqcb9ABOQXokP0"]',
+  participants: '[class="_33xB9lnxWiz4_roxOWYK_h"]',
   captcha: 'img[class="gc__3_EfD"]',
   voteAgain: '[class="_3viry_vXUhTU4nSnvn2iB_"]',
   reloadCaptcha: 'button[class="gc__1JSqe"]',
