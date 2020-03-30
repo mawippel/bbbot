@@ -14,7 +14,7 @@ Linux / Mac
 ```
 export GLOBO_USERNAME='your-email@globo.com'
 export GLOBO_PASSWORD='xxxxxxxxx'
-export PARTICIPANTE=3
+export PARTICIPANTE=2
 ```
 
 Windows PowerShell
@@ -22,7 +22,7 @@ Windows PowerShell
 ```
 $env:GLOBO_USERNAME='your-email@globo.com'
 $env:GLOBO_PASSWORD='xxxxxxxxx'
-$env:PARTICIPANTE=3
+$env:PARTICIPANTE=2
 ```
 
 PARTICIPANTE se refere à posição do participante. Caso ele seja o primeiro da lista, colocar um 1,
